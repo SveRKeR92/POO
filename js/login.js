@@ -14,7 +14,8 @@ $('#login').click(function () {
             dataType: "json",
             data: data,
             success:function(response){
-                console.log(response);
+                window.location.href('../Public/profil.php');
+                console.log("youpi");
             }
         });
     }else{

@@ -1,8 +1,8 @@
 <?php
+session_start();
 require "./Autoloader.php";
 Autoloader::register();
 
-session_start();
 
 use App\Chat;
 use App\Friends;
