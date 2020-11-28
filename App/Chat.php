@@ -1,7 +1,6 @@
 <?php
-
 use Database\Database;
 
-class Chatting extends Database{
+class Chat extends Database{
 
 }

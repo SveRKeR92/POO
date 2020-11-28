@@ -2,7 +2,7 @@
 
 use Database\Database;
 
-class User extends Database
+class Users extends Database
 {
-    
+
 }
