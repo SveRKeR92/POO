@@ -1,7 +1,6 @@
 <?php
-
-use Database\Database;
-
+namespace App;
+use Core\Database;
 class Users extends Database
 {
 
