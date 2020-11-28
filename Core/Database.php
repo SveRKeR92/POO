@@ -3,7 +3,7 @@ namespace Core;
 
 class Database{
 
-    protected $pdo;
+    public $pdo;
     private $host;
     private $login;
     private $pass;

@@ -19,10 +19,27 @@ $users = new Users();
 
 switch ($_GET["function"]) {
     case "login":
+        var_dump($_POST);
+        $verif = $users->pdo->prepare("SELECT * FROM user WHERE email = :email AND password = :password");
+        $verif->bindParam(':email', $_POST["email"], PDO::PARAM_STR);
+        $verif->bindParam(':password', $_POST["password"], PDO::PARAM_STR);
+        $verif->execute();
+
+        if($verif->rowCount() > 0){
+            $infos = $verif->fetch(PDO::FETCH_OBJ);
+            $_SESSION["user"]["id"] = $infos->user_id;
+            $_SESSION["user"]["pseudo"] = $infos->pseudo;
+            $_SESSION["user"]["email"] = $infos->email;
+            var_dump($_SESSION);
+            var_dump($infos);
+        }else{
+            echo "pas content";
+        }
 
         break;
 
     case "signup":
+        var_dump($_POST);
         $users->prepare("INSERT INTO user (pseudo, email, password) VALUES (:pseudo, :email, :password)", $_POST);
         break;
 }
