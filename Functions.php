@@ -25,14 +25,14 @@ switch ($_GET["function"]) {
         $verif->bindParam(':password', $_POST["password"], PDO::PARAM_STR);
         $verif->execute();
 
-        if($verif->rowCount() > 0){
+        if ($verif->rowCount() > 0) {
             $infos = $verif->fetch(PDO::FETCH_OBJ);
             $_SESSION["user"]["id"] = $infos->user_id;
             $_SESSION["user"]["pseudo"] = $infos->pseudo;
             $_SESSION["user"]["email"] = $infos->email;
             var_dump($_SESSION);
             var_dump($infos);
-        }else{
+        } else {
             echo "pas content";
         }
 
@@ -41,5 +41,11 @@ switch ($_GET["function"]) {
     case "signup":
         var_dump($_POST);
         $users->prepare("INSERT INTO user (pseudo, email, password) VALUES (:pseudo, :email, :password)", $_POST);
+        break;
+
+
+    case "createSond":
+        var_dump($_POST);
+        $sondage->createSond($_POST);
         break;
 }
