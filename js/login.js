@@ -14,12 +14,12 @@ $('#login').click(function () {
             dataType: "json",
             data: data,
             success:function(response){
-                window.location.href('../Public/profil.php');
+                location.href= "../Public/profil.php";
                 console.log("youpi");
             }
         });
     }else{
-        console.log("inputs vides");
+        alert('veuillez remplir tous les champs');
     }
 });
 
@@ -33,10 +33,11 @@ $('#signup').click(function () {
             dataType: "json",
             data: data,
             success:function(response){
+                location.href= "../Public/login.php";
                 console.log(response);
             }
         });
     }else{
-        console.log("inputs vides");
+        alert('veuillez remplir tous les champs');
     }
 });

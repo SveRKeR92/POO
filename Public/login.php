@@ -9,9 +9,9 @@ require "header.php";
         <input type="password" placeholder="Password" name="password" id="password">
         <button id="login">Log In</button>
     </form>
+    <p>Pas de compte ? <a href="signup.php">S'inscrire</a></p>
 </section>
 
-<p>Pas de compte ? <a href="signup.php">S'inscrire</a></p>
 
 
 <?php

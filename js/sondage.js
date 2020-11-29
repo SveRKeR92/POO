@@ -1,7 +1,7 @@
 $('#create').click(function () {
     let sond = $('#createSond').serializeArray();
 
-    if ($("#title").val() && $('#q1').val() && $('#q2').val()) {
+    if ($("#title").val() && $('#q1').val() && $('#q2').val() && $('#q3').val() && $('#q4').val()) {
         $.ajax({
             url: "../Functions.php?function=createSond",
             method: "POST",
@@ -12,6 +12,6 @@ $('#create').click(function () {
             }
         });
     }else{
-        console.log("Titre et au moins deux questions obligatoires");
+        alert("veuillez tout remplir");
     }
 });

@@ -41,6 +41,7 @@ switch ($_GET["function"]) {
     case "signup":
         var_dump($_POST);
         $users->prepare("INSERT INTO user (pseudo, email, password) VALUES (:pseudo, :email, :password)", $_POST);
+        header('location:login.php');
         break;
 
 
