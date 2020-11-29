@@ -25,26 +25,32 @@ echo "<br> results: <br>";
 var_dump($results);
 
 ?>
-<section>
+<section id="sondage_container" class="<?=$display->sondage_id?>">
     <h2><?= $display->sondage_title ?></h2>
 
     <?php 
         if($display->status_sondage == 'On'){
-            echo "<div class='result'></div>";
+            echo "<div class='result'>$display->sondage_question1 : $results->result_1 votes  <input type='radio' name='vote' value='1' id='vote1'> <label for='vote1'>Voter 1</label></div>";
+            echo "<div class='result'>$display->sondage_question2 : $results->result_2 votes  <input type='radio' name='vote' value='2' id='vote2'> <label for='vote2'>Voter 2</label></div>";
+            echo "<div class='result'>$display->sondage_question3 : $results->result_3 votes  <input type='radio' name='vote' value='3' id='vote3'> <label for='vote3'>Voter 3</label></div>";
+            echo "<div class='result'>$display->sondage_question4 : $results->result_4 votes  <input type='radio' name='vote' value='4' id='vote4'> <label for='vote4'>Voter 4</label></div>";
+            echo "<p>Ce sondage est toujours en cours, vous pouvez voter en choissant une question et en appuyant sur le bouton voter</p>";
+            echo "<br>";
+            echo "<button id='vote'>Voter<button>";
         }
-    
+        if($display->status_sondage == 'Off'){
+            echo "<div class='result'>$display->sondage_question1 : $results->result_1 votes</div>";
+            echo "<div class='result'>$display->sondage_question2 : $results->result_2 votes  </div>";
+            echo "<div class='result'>$display->sondage_question3 : $results->result_3 votes  </div>";
+            echo "<div class='result'>$display->sondage_question4 : $results->result_4 votes  </div>";
+            echo "<p>Ce sondage est terminé ! Vous pouvez tonjours consulter les résultats affichés au dessus</p>";
+        }
     ?>
 
 
 </section>
 
-
-
-
-
-
-
-
+<script src="../js/vote.js"></script>
 
 
 <?php

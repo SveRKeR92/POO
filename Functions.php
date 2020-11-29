@@ -49,4 +49,13 @@ switch ($_GET["function"]) {
         var_dump($_POST);
         $sondage->createSond($_POST);
         break;
+
+    case "vote":
+        $id = $_POST["data"][0];
+        $sond_id = $_POST["data"][1];
+        var_dump($id);
+        var_dump($sond_id);
+        $sondage->Vote($id, $sond_id);
+        echo json_encode("");
+        break;
 }

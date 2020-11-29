@@ -1,4 +1,5 @@
 <?php
+
 namespace App;
 
 use Core\Database;
@@ -17,12 +18,12 @@ class Sondage extends Database
         $id = $query->fetch(\PDO::FETCH_OBJ);
         $this->pdo->query("INSERT INTO results (sondage_id, result_1, result_2, result_3, result_4, total_entries) VALUES ($id->sondage_id, 0, 0, 0, 0, 0) ");
     }
-    
+
     function getSonds()
     {
         $query = $this->pdo->query("SELECT * FROM sondages");
         $response = $query->fetchAll(\PDO::FETCH_OBJ);
-        
+
         echo json_encode($response);
     }
 
@@ -31,15 +32,15 @@ class Sondage extends Database
         $query = $this->pdo->query("SELECT * FROM sondages WHERE sondage_id = $id");
         $response = $query->fetch(\PDO::FETCH_OBJ);
 
-        return($response);
+        return ($response);
     }
-    
+
     function getSondsNoAjax()
     {
         $query = $this->pdo->query("SELECT * FROM sondages");
         $response = $query->fetchAll(\PDO::FETCH_OBJ);
 
-        return($response);
+        return ($response);
     }
 
 
@@ -48,7 +49,7 @@ class Sondage extends Database
         $query = $this->pdo->query("SELECT * FROM sondages WHERE status_sondage = 'On'");
         $response = $query->fetchAll(\PDO::FETCH_OBJ);
 
-        return($response);
+        return ($response);
     }
 
     function getInactiveSonds()
@@ -56,7 +57,7 @@ class Sondage extends Database
         $query = $this->pdo->query("SELECT * FROM sondages WHERE status_sondage = 'Off'");
         $response = $query->fetchAll(\PDO::FETCH_OBJ);
 
-        return($response);
+        return ($response);
     }
 
     function getMySonds($myId)
@@ -67,10 +68,11 @@ class Sondage extends Database
                                     AND sondage_creator = user_id");
         $response = $query->fetchAll(\PDO::FETCH_OBJ);
 
-        return($response);
+        return ($response);
     }
 
-    function getMyParticipate($myId){
+    function getMyParticipate($myId)
+    {
         $query = $this->pdo->query("SELECT * FROM sondages 
                                     INNER JOIN user
                                     INNER JOIN participation
@@ -79,17 +81,50 @@ class Sondage extends Database
                                     AND participation.user_id = user.user_id");
         $response = $query->fetchAll(\PDO::FETCH_OBJ);
 
-        return($response);
+        return ($response);
     }
 
-    function getResults($sondId){
+    function getResults($sondId)
+    {
         $query = $this->pdo->query("SELECT * FROM results
                                     INNER JOIN sondages
                                     WHERE sondages.sondage_id = $sondId
                                     AND results.sondage_id = sondages.sondage_id");
         $response = $query->fetch(\PDO::FETCH_OBJ);
 
-        return($response);
+        return ($response);
     }
 
+    function Vote($nInput, $sond_id)
+    {
+        $query = $this->pdo->query("SELECT * FROM results WHERE sondage_id = $sond_id");
+        $response = $query->fetch(\PDO::FETCH_OBJ);
+
+        $points1 = $response->result_1;
+        $points2 = $response->result_2;
+        $points3 = $response->result_3;
+        $points4 = $response->result_4;
+        $total = $response->total_entries; 
+
+        switch ($nInput) {
+            case "1":
+                $this->pdo->query("UPDATE results SET result_1 = ($points1 + 1) WHERE sondage_id = $sond_id");  
+                $this->pdo->query("UPDATE results SET total_entries = ($total + 1) WHERE sondage_id = $sond_id");  
+                break;
+            case "2":
+                $this->pdo->query("UPDATE results SET result_2 = ($points2 + 1) WHERE sondage_id = $sond_id");  
+                $this->pdo->query("UPDATE results SET total_entries = ($total + 1) WHERE sondage_id = $sond_id"); 
+                break;
+            case "3":
+                $this->pdo->query("UPDATE results SET result_3 = ($points3 + 1) WHERE sondage_id = $sond_id ");  
+                $this->pdo->query("UPDATE results SET total_entries = ($total + 1) WHERE sondage_id = $sond_id"); 
+                break;
+            case "4":
+                $this->pdo->query("UPDATE results SET result_4 = ($points4 + 1) WHERE sondage_id = $sond_id");  
+                $this->pdo->query("UPDATE results SET total_entries = ($total + 1) WHERE sondage_id = $sond_id"); 
+                break;
+        }
+
+        $this->pdo->query("INSERT INTO participation (user_id, sondage_id) VALUES (". $_SESSION['user']['id'].", $sond_id)");
+    }
 }
