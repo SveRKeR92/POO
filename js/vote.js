@@ -2,7 +2,7 @@ $('#vote').click(function(){
     let data = [];
     data.push($('input:checked').val()); 
     
-    data.push($('#sondage_container').attr('class'));
+    data.push($('#sondage_container').attr('data-i'));
     console.log(data);
 
     $.ajax({

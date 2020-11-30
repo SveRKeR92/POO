@@ -65,10 +65,10 @@ class Sondage extends Database
         $query = $this->pdo->query("SELECT * FROM sondages 
                                     INNER JOIN user
                                     WHERE sondage_creator = $myId
-                                    AND sondage_creator = user_id");
+                                    AND sondage_creator = user.user_id");
         $response = $query->fetchAll(\PDO::FETCH_OBJ);
 
-        return ($response);
+        echo json_encode($response);
     }
 
     function getMyParticipate($myId)
@@ -143,5 +143,9 @@ class Sondage extends Database
         }
 
         $this->pdo->query("INSERT INTO participation (user_id, sondage_id) VALUES (". $_SESSION['user']['id'].", $sond_id)");
+    }
+
+    function endSond($sond_id){
+        $this->pdo->query("UPDATE sondages SET status_sondage = 'Off' WHERE sondage_id = $sond_id");
     }
 }

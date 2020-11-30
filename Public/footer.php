@@ -11,8 +11,6 @@
 
     </footer>
     <script src="../js/login.js"></script>
-    <script src="../js/chat.js"></script>
-    <script src="../js/friends.js"></script>
     <script src="../js/sondage.js"></script>
     </body>
 

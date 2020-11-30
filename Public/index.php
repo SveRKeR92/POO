@@ -1,14 +1,13 @@
 <?php
-    // define("ROOT", "http://localhost/POO/project-Poo");
     session_start();
 
     require "../Autoloader.php";
     Autoloader::register();
+ 
+    require "header.php";
 
     use App\Sondage;
     $sondages = new Sondage();
-
-    require "header.php";
 ?>
 
 <section class="all-sondages">

@@ -28,7 +28,7 @@ $participation = $sondage->checkIfParticipated($_SESSION['user']['id'], $id);
 var_dump($participation);
 
 ?>
-<section id="sondage_container" class="<?=$display->sondage_id?>">
+<section id="sondage_container" data-i="<?=$display->sondage_id?>">
     <h2><?= $display->sondage_title ?></h2>
 
     <?php 

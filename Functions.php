@@ -57,4 +57,12 @@ switch ($_GET["function"]) {
         $sondage->Vote($id, $sond_id);
         echo json_encode("");
         break;
+
+    case "MySonds":
+        $sondage->getMySonds($_SESSION['user']['id']);
+        break;
+
+    case "endSond":
+        $sondage->endSond($_POST["id"][0]);
+        break;
 }
