@@ -1,25 +1,24 @@
 <?php
 session_start();
-require "header.php";
 
- var_dump($_SESSION);
+var_dump($_SESSION);
+require "../Autoloader.php";
+Autoloader::register();
+
+require "header.php";
 
  if(empty($_SESSION["user"])){
     header('location:login.php');
 }
 
-  /*  if(isset($_POST['pseudo']) && isset($_POST['message']) && !empty($_POST['pseudo']) && !empty($_POST['message'])) 
-    {
-        $pseudo = $_POST['pseudo'];
-        $message = $_POST['message'];
-        $insertmsg= $dbconfig->prepare('INSERT INTO chat("pseudo", "message") VALUES(?, ?)');
-        $insertmsg->execute(array($pseudo, $message));
-    }
-*/
-// $destinataires = $bdd->query('SELECT pseudo FROM user ORDER BY pseudo');
+var_dump($_SESSION["user"]);
 
 ?>
 
+<section class="profil">
+    
+    <a href="disconnect.php">Se déconnecter</a>
+</section>
 
 <form id="formulaire">
     <br><br>

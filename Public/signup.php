@@ -1,5 +1,9 @@
 <?php
 session_start();
+
+require "../Autoloader.php";
+Autoloader::register();
+
 require "header.php";
 ?>
 <section id="signup-container">
@@ -9,9 +13,9 @@ require "header.php";
         <input type="password" placeholder="Password" name="password" id="password">
         <button id="signup">Sign up</button>
     </form>
+    <p>Déjà inscrit ? <a href="login.php">Se connecter</a></p>
 </section>
 
-<p>Déjà inscrit ? <a href="login.php">Se connecter</a></p>
 
 <?php
 require "footer.php";
