@@ -1,5 +1,9 @@
 <?php
 session_start();
+
+require "../Autoloader.php";
+Autoloader::register();
+
 require "header.php";
 ?>
 <section id="signup-container">
