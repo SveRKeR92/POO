@@ -11,7 +11,6 @@ $('#login').click(function () {
         $.ajax({
             url: "../Functions.php?function=login",
             method: "POST",
-            dataType: "json",
             data: data,
             success:function(response){
                 location.href= "../Public/profil.php";
@@ -30,7 +29,6 @@ $('#signup').click(function () {
         $.ajax({
             url: "../Functions.php?function=signup",
             method: "POST",
-            dataType: "json",
             data: data,
             success:function(response){
                 location.href= "../Public/login.php";

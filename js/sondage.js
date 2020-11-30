@@ -5,7 +5,6 @@ $('#create').click(function () {
         $.ajax({
             url: "../Functions.php?function=createSond",
             method: "POST",
-            dataType: "json",
             data: sond,
             success:function(response){
                 location.href('index.php');

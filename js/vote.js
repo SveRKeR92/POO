@@ -8,11 +8,10 @@ $('#vote').click(function(){
     $.ajax({
         url: "../Functions.php?function=vote",
         method: "POST",
-        dataType: "json",
         data: {data},
         success:function(response){
-            $('#sondage_container').empty();
-            $('#sondage_container').append("<p>Merci d'avoir voté!</p>");      
+            $('#sondage_container').html(`<h2>Merci d'avoir voté!</h2>
+                                        <a href='index.php'>Retour à l'accueil</a>`);      
         }
     });
 })
