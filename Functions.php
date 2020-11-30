@@ -42,4 +42,8 @@ switch ($_GET["function"]) {
         var_dump($_POST);
         $users->prepare("INSERT INTO user (pseudo, email, password) VALUES (:pseudo, :email, :password)", $_POST);
         break;
+
+        case "sendMessage":
+            $chat->sendMessage($_POST);
+        break;
 }
