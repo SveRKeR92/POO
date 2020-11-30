@@ -27,3 +27,5 @@ require "header.php";
 
 <script src="../js/mysonds.js"></script>
 
+<?php
+require "footer.php";
