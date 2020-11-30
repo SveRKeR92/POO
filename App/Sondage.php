@@ -84,6 +84,23 @@ class Sondage extends Database
         return ($response);
     }
 
+    function checkIfParticipated($myId, $idSond){
+        $query = $this->pdo->query("SELECT * FROM sondages 
+                                    INNER JOIN user
+                                    INNER JOIN participation
+                                    WHERE participation.user_id = $myId 
+                                    AND participation.sondage_id = $idSond
+                                    AND participation.sondage_id = sondages.sondage_id 
+                                    AND participation.user_id = user.user_id");
+        if($query->rowCount() > 0){
+            $response = true;
+        }else{
+            $response = false;
+        }
+
+        return ($response);
+    }
+
     function getResults($sondId)
     {
         $query = $this->pdo->query("SELECT * FROM results
