@@ -7,7 +7,7 @@ $('#create').click(function () {
             method: "POST",
             data: sond,
             success:function(response){
-                location.href('index.php');
+                location.href= '../Public/index.php';
             }
         });
     }else{
