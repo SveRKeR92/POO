@@ -12,6 +12,8 @@
     </footer>
     <script src="../js/login.js"></script>
     <script src="../js/sondage.js"></script>
+    <script src="../js/friends.js"></script>
+    <script src="../js/search.js"></script>
     </body>
 
     </html>

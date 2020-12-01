@@ -13,7 +13,7 @@ $('#login').click(function () {
             method: "POST",
             data: data,
             success:function(response){
-                location.href= "../Public/profil.php";
+                // location.href= "../Public/profil.php";
                 console.log("youpi");
             }
         });
@@ -31,7 +31,7 @@ $('#signup').click(function () {
             method: "POST",
             data: data,
             success:function(response){
-                location.href= "../Public/login.php";
+                // location.href= "../Public/login.php";
                 console.log(response);
             }
         });
