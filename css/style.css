@@ -13,15 +13,13 @@ a{
 
 li{
     display: inline;
+    padding: 0 20px;
 }
 
 a:hover, button:hover{
     cursor: pointer;
 }
 
-<<<<<<< HEAD
-
-=======
 section{
     width: 100%;
     text-align: center;
@@ -49,4 +47,23 @@ input{
     padding: 10px;
     margin:10px;
 }
->>>>>>> 4613443d67863aba2f06535ce2b40cfbcc376d54
+
+input:read-only{
+    border: none;
+    outline: none;
+}
+
+button{
+    padding: 5px 10px;
+    border-radius: 5px;
+    outline: none;
+    background-color: #eeeeee;
+    border: none;
+    transition: 0.5s;
+    margin: 15px;
+}
+
+button:hover{
+    transform: scale(1.2);
+    box-shadow: 5px 5px 15px black;
+}

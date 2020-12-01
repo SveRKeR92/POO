@@ -14,7 +14,6 @@
                 <li><a href="index.php">Home</a></li>
                 <li><a href="create.php">Créer un sondage</a></li>
                 <li><a href="profil.php">Profil</a></li>
-                <li><a href="search.php">Rechercher</a></li>
             </ul>
         </nav>
     </header>   

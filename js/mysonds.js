@@ -1,8 +1,5 @@
 getMySonds();
 
-
-
-
 function getMySonds(){   
     $.ajax({
         url:"../Functions.php?function=MySonds",
@@ -25,7 +22,7 @@ function getMySonds(){
                     </div>               
                     `);                  
                 } 
-                console.log('test');          
+                console.log(sondage.status_sondage);          
             });
         }
     });

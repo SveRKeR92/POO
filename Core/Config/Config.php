@@ -1,7 +1,7 @@
 <?php
 
 $dbconfig = [
-    "host" => "mysql:host=localhost:3306;dbname=projet-poo",
+    "host" => "mysql:host=localhost:3306;dbname=project-poo",
     "login" => "root",
     "pass" => "",
     "options" => array(

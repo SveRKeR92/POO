@@ -66,6 +66,17 @@ switch ($_GET["function"]) {
         break;
 
     case "endSond":
-        $sondage->endSond($_POST["id"][0]);
+        var_dump($_POST["id"]);
+        $sondage->endSond($_POST["id"]);
         break;
+
+    case "getMyInfos":
+        $users->getMyData($_SESSION['user']['id']);
+        break;
+
+    case 'updateInfos':
+        $users->changeMyData($_POST, $_SESSION['user']['id']);
+        $_SESSION['user']['pseudo'] = $_POST['pseudo'];
+        $_SESSION['user']['email'] = $_POST['email'];
+    break;
 }
