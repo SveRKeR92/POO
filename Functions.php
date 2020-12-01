@@ -62,7 +62,7 @@ switch ($_GET["function"]) {
         break;
 
     case "MySonds":
-        $sondage->getMySonds($_SESSION['user']['id']);
+        $sondage->getMySonds($_SESSION["user"]["id"]);
         break;
 
     case "endSond":

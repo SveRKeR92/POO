@@ -1,10 +1,10 @@
 <?php
+session_start();
 require "../Autoloader.php";
 Autoloader::register();
 
 use App\Sondage;
 
-session_start();
 require "header.php";
 
 

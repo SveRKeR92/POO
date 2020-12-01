@@ -10,7 +10,6 @@ require "header.php";
     header('location:login.php');
 }
 
-
 ?>
 
 <section class="profil">
