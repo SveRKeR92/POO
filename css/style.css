@@ -46,3 +46,7 @@ input{
     padding: 10px;
     margin:10px;
 }
+
+.search-container{
+    display: flex;
+}

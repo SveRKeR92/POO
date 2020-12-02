@@ -2,30 +2,40 @@
 session_start();
 require "header.php";
 
-if(empty($_SESSION["user"])){
+if (empty($_SESSION["user"])) {
     header('location:login.php');
 }
 
-var_dump($_SESSION["user"]);
-
 ?>
 
-<form id="formSearch" action="">
+<div class="search-container">
+    <section>
 
-    <h3>Qui voulez vous ajouter en ami ?</h3>
-    <br>
+        <form id="formSearch" action="">
 
-	Pseudo: <input type="text" size="10" maxlength="40" name="name" id="recherche" /><br />
-	
-    <input type="button" value="Recherche" id="research"/>
-    
-    <br>
-    <br>
+            <h3>Qui voulez vous ajouter en ami ?</h3>
+            <br>
 
-    <ul id="friendSearch">
+            Pseudo: <input type="text" size="10" maxlength="40" name="name" id="recherche" /><br />
 
-    </ul>
-</form>
+            <input type="button" value="Recherche" id="research" />
+
+            <br>
+            <br>
+
+            <ul id="friendSearch">
+
+            </ul>
+        </form>
+    </section>
+    <section>
+        <button id="friendsButton">Cacher tes amis</button>
+        <ul id="friendsList"></ul>
+        <a href="disconnect.php">Se déconnecter</a>
+    </section>
+</div>
+
+
 
 
 <?php
