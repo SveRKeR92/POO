@@ -11,7 +11,7 @@ var_dump($_SESSION["user"]);
 ?>
 
 <section class="profil">
-    <button id="friendsButton">Afficher tes amis</button>
+    <button id="friendsButton">Cacher tes amis</button>
     <ul id="friendsList"></ul>
     <a href="disconnect.php">Se déconnecter</a>
 </section>
