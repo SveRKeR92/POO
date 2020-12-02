@@ -49,6 +49,9 @@ require "header.php";
         <br><br>
     </form>   
     
+    <button id="friendsButton">Cacher tes amis</button>
+    <ul id="friendsList"></ul>
+    <a href="disconnect.php">Se déconnecter</a>
 </section>
 
 <?php

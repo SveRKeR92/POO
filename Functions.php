@@ -79,4 +79,40 @@ switch ($_GET["function"]) {
         $_SESSION['user']['pseudo'] = $_POST['pseudo'];
         $_SESSION['user']['email'] = $_POST['email'];
     break;
+    
+    case "friendsList":
+        $query = $users->pdo->prepare("SELECT user_id, pseudo FROM user WHERE user_id IN (SELECT friend_user_id FROM friendship WHERE user_id = :user_id)");
+        $query->bindParam(':user_id', $_SESSION["user"]["id"], PDO::PARAM_STR);
+        $query->execute();
+        $response = $query->fetchAll(\PDO::FETCH_OBJ);
+        echo json_encode($response);
+        break;
+
+    case "search":
+        $pseudo = $_GET["pseudo"]."%";
+
+        $query = $users->pdo->prepare("SELECT user_id, pseudo FROM user WHERE pseudo LIKE :pseudo AND user_id != :id");
+        $query->bindParam(':pseudo', $pseudo, PDO::PARAM_STR);
+        $query->bindParam(':id', $_SESSION["user"]["id"], PDO::PARAM_STR);
+        $query->execute();
+
+        $response = $query->fetchAll(\PDO::FETCH_OBJ);
+        echo json_encode($response);
+        break;
+
+    case "addInFriendList":
+        $query = $users->pdo->prepare("INSERT INTO friendship (user_id, friend_user_id) VALUES (:id, :friend_id)");
+        $query->bindParam(':id', $_SESSION["user"]["id"], PDO::PARAM_STR);
+        $query->bindParam(':friend_id', $_POST["friend_user_id"], PDO::PARAM_STR);
+        $query->execute();
+        break;
+
+    case "deleteInFriendList":
+        echo $_POST['friend_user_id'];
+        $query = $users->pdo->prepare("DELETE FROM friendship WHERE user_id = :user_id AND friend_user_id = :friend_user_id");
+        $query->bindParam(':user_id', $_SESSION["user"]["id"], PDO::PARAM_STR);
+        $query->bindParam(':friend_user_id', $_POST["friend_user_id"], PDO::PARAM_STR);
+        echo $query->execute();
+        break;
+
 }
