@@ -67,7 +67,7 @@ switch ($_GET["function"]) {
         break;
 
     case "friendsList":
-        $query = $users->pdo->prepare("SELECT pseudo FROM user WHERE user_id IN (SELECT friend_user_id FROM friendship WHERE user_id = :user_id)");
+        $query = $users->pdo->prepare("SELECT user_id, pseudo FROM user WHERE user_id IN (SELECT friend_user_id FROM friendship WHERE user_id = :user_id)");
         $query->bindParam(':user_id', $_SESSION["user"]["id"], PDO::PARAM_STR);
         $query->execute();
         $response = $query->fetchAll(\PDO::FETCH_OBJ);
@@ -90,7 +90,15 @@ switch ($_GET["function"]) {
         $query = $users->pdo->prepare("INSERT INTO friendship (user_id, friend_user_id) VALUES (:id, :friend_id)");
         $query->bindParam(':id', $_SESSION["user"]["id"], PDO::PARAM_STR);
         $query->bindParam(':friend_id', $_POST["friend_user_id"], PDO::PARAM_STR);
-        echo $query->execute();
-
+        $query->execute();
         break;
+
+    case "deleteInFriendList":
+        echo $_POST['friend_user_id'];
+        $query = $users->pdo->prepare("DELETE FROM friendship WHERE user_id = :user_id AND friend_user_id = :friend_user_id");
+        $query->bindParam(':user_id', $_SESSION["user"]["id"], PDO::PARAM_STR);
+        $query->bindParam(':friend_user_id', $_POST["friend_user_id"], PDO::PARAM_STR);
+        echo $query->execute();
+        break;
+
 }

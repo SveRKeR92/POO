@@ -16,8 +16,22 @@ $('#friendsButton').click(function () {
 
             $("#friendsList").append('<h2>Liste d\'amis</h2>');
             friends.forEach((item, index) => {
-                $("#friendsList").append('<li>'+ (index + 1) + ' ' + item["pseudo"] + '</li><br>');
+                $("#friendsList").append("<li>"+ (index + 1) + " " + item["pseudo"] + " </li><button onclick='deletefriend(" + item["user_id"] + ")'>Supprimer</button><br>");
             });
         }
     });
 });
+
+function deletefriend(id) {
+
+    let data = {"friend_user_id": id};
+
+    $.ajax({
+        url: "../Functions.php?function=deleteInFriendList",
+        method: "POST",
+        data: data,
+        success:function(response){
+            console.log(response);
+        }
+    });
+}
