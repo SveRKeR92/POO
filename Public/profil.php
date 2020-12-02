@@ -35,19 +35,6 @@ require "header.php";
     <button id="confirm" style="display: none;">Confirmer les changements</button>
 
    
-
-
-
-
-    <form id="formulaire">
-        <br><br>
-        <input type="text" name="pseudo" placeholder="Pseudo" />
-        <br><br>
-        <textarea placeholder="votre message" name="message" type="text"></textarea>
-        <br><br>
-        <button id="sendMessage">Envoyer</button>
-        <br><br>
-    </form>   
     
     <button id="friendsButton">Cacher tes amis</button>
     <ul id="friendsList"></ul>
@@ -60,20 +47,3 @@ require "footer.php";
 
 
 <script src="../js/user.js"></script>
-
-<script>
-
-    $("#sendMessage") .click(function(){
-        let data = $("#formulaire").serializeArray();
-        console.log(data);
-        $.ajax({
-            url:'../Functions.php?function=sendMessage',
-            method:"POST",
-            data:data,
-            success:function(response){
-                console.log();
-            }
-        })
-    })
-
-</script>

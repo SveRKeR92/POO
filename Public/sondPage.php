@@ -51,10 +51,25 @@ $participation = $sondage->checkIfParticipated($_SESSION['user']['id'], $id);
         }
     ?>
 
+    <br><br><br>
+</section>
+
+<section id="chat">
+
+<h2>Commentaires</h2>
+<div style="width: 100%;">    
+    <input type="text" id="userCom" name="message" placeholder="Votre Commentaire : " style="width: 60%;">
+    <button id="sendCom">Envoyer</button>
+</div>
+<br><hr style="width: 80%;">
+<div id="comments" style="width: 80%; text-align:left;">
+
+</div>
 
 </section>
 
 <script src="../js/vote.js"></script>
+<script src="../js/chat.js"></script>
 
 
 <?php

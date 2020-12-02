@@ -44,7 +44,14 @@ switch ($_GET["function"]) {
         break;
 
     case "sendMessage":
+        var_dump($_POST);
+        $_POST['pseudo'] = $_SESSION['user']['pseudo'];
+        var_dump($_POST);
         $chat->sendMessage($_POST);
+        break;
+
+    case "getMsg":
+        $chat->getMessages($_POST["sondage_id"]);
         break;
 
     case "createSond":
@@ -79,7 +86,7 @@ switch ($_GET["function"]) {
         $_SESSION['user']['pseudo'] = $_POST['pseudo'];
         $_SESSION['user']['email'] = $_POST['email'];
     break;
-    
+
     case "friendsList":
         $query = $users->pdo->prepare("SELECT user_id, pseudo FROM user WHERE user_id IN (SELECT friend_user_id FROM friendship WHERE user_id = :user_id)");
         $query->bindParam(':user_id', $_SESSION["user"]["id"], PDO::PARAM_STR);
