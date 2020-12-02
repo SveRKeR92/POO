@@ -5,7 +5,7 @@
             echo "<ul>
                         <li><a href='mySonds.php'>Mes sondages créés</a></li>
                         <li><a href='participate.php'>Mes participations</a></li>
-                        <li><a href='addFriend.php'>Ajouter un ami</a></li>
+                        <li><a href='search.php'>Ajouter un ami</a></li>
                         <li><a href='disconnect.php'>Se déconnecter</a></li>
                     </ul>";
         }
