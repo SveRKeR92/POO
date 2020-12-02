@@ -18,7 +18,7 @@ if (empty($_SESSION["user"])) {
 
             Pseudo: <input type="text" size="10" maxlength="40" name="name" id="recherche" /><br />
 
-            <input type="button" value="Recherche" id="research" />
+            <button id="research">Rechercher</button>
 
             <br>
             <br>

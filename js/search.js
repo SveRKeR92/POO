@@ -32,7 +32,7 @@ function addfriend(id) {
         method: "POST",
         data: data,
         success:function(response){
-            console.log(response);
+            getFriends();
         }
     });
 }
